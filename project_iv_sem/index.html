@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Send Email Using JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h3>SEND EMAIL</h3>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Email id" required>
+            <input type="text" id="phone" placeholder="phone number" required>
+            <textarea id="message" rows="4" placeholder="Here you type message"></textarea>
+            <button type="submit">Send</button>
+
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail(){
+            Email.send({
+                SecureToken: "7a3d48db-5a7c-403e-ae05-7fda94ea9521",
+                
+                To : 'gaurav.21scse1011532@galgotiasuniversity.edu.in',
+                From : document.getElementById("email").value,
+                Subject : "Subject",
+                Body : "Name: " + document.getElementById("name").value
+                    + "<br> Email: " + document.getElementById("email").value
+                    + "<br> phone no: " + document.getElementById("phone").value
+                    + "<br> Message: " + document.getElementById("message").value
+            }).then(
+            message => alert("message sent succesfully")
+            );
+
+        }
+    </script>
+</body>
+</html>
